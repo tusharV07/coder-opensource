@@ -239,6 +239,7 @@ async function createWindow(): Promise<void> {
   }
 
   state.mainWindow = new BrowserWindow(windowSettings)
+  state.mainWindow.setIgnoreMouseEvents(true, { forward: true });
 
   // Add more detailed logging for window events
   state.mainWindow.webContents.on("did-finish-load", () => {
@@ -400,7 +401,7 @@ function showMainWindow(): void {
         ...state.windowSize
       });
     }
-    state.mainWindow.setIgnoreMouseEvents(false);
+    //state.mainWindow.setIgnoreMouseEvents(false);
     state.mainWindow.setAlwaysOnTop(true, "screen-saver", 1);
     state.mainWindow.setVisibleOnAllWorkspaces(true, {
       visibleOnFullScreen: true
@@ -410,7 +411,7 @@ function showMainWindow(): void {
     state.mainWindow.showInactive(); // Use showInactive instead of show+focus
     state.mainWindow.setOpacity(1); // Then set opacity to 1 after showing
     state.isWindowVisible = true;
-    console.log('Window shown with showInactive(), opacity set to 1');
+    //console.log('Window shown with showInactive(), opacity set to 1');
   }
 }
 
